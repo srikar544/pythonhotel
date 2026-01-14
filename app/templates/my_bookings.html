@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}My Bookings{% endblock %}
+
+{% block extra_css %}
+<!-- Link to custom CSS for My Bookings page -->
+<link rel="stylesheet" href="{{ url_for('static', filename='my_bookings.css') }}">
+
+<style>
+    /* Booking status styles */
+    .status { font-weight: bold; margin-top: 5px; }
+    .cancelled { color: red; }
+    .past { color: gray; }
+    .confirmed { color: green; }
+
+    /* Booking card layout */
+    .booking-card {
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    /* Cancel button styling */
+    .cancel-btn {
+        background: red;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="booking-container">
+    <h2>My Bookings</h2>
+
+    {% if bookings %}
+        <!-- Loop through each booking for the logged-in user -->
+        {% for booking in bookings %}
+        <div class="booking-card" id="booking-{{ booking.id }}">
+            <!-- Hotel info -->
+            <h3>{{ booking.room.hotel.name }} {{ booking.room.hotel.city }}</h3>
+            <p class="address">{{ booking.room.hotel.address }}</p>
+
+            <!-- Booking details -->
+            <div class="details">
+                <p><strong>Room:</strong> {{ booking.room.room_number }} {{ booking.room.room_type }}</p>
+                <p><strong>Check-In:</strong> {{ booking.check_in }}</p>
+                <p><strong>Check-Out:</strong> {{ booking.check_out }}</p>
+                {% set nights = (booking.check_out - booking.check_in).days %}
+                <p><strong>Total:</strong> R{{ nights * booking.room.price }}</p>
+            </div>
+
+            <!-- Booking status & actions -->
+            {% if booking.status == "CANCELLED" %}
+                <p class="status cancelled">Cancelled</p>
+            {% elif booking.check_out < today %}
+                <p class="status past">Completed</p> 
+            {% else %}
+                <p class="status confirmed">Confirmed</p>
+                <!-- Cancel booking button -->
+                <button class="cancel-btn" onclick="cancelBooking({{ booking.id }})">Cancel Booking</button> 
+            {% endif %}
+        </div>
+        {% endfor %}
+    {% else %}
+        <!-- No bookings message -->
+        <p>You have no bookings yet.</p>
+    {% endif %}
+</div>
+
+<script>
+    /**
+     * Cancel a booking via AJAX
+     * @param {number} bookingId - ID of the booking to cancel
+     */
+    function cancelBooking(bookingId) {
+        if (!confirm('Are you sure you want to cancel this booking?')) return;
+
+        fetch(`/cancel-booking/${bookingId}`, {
+            method: 'POST',
+            headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        })
+        .then(res => {
+            if (res.ok) {
+                // Remove the booking card immediately from the page
+                document.getElementById(`booking-${bookingId}`).remove();
+            } else {
+                res.text().then(t => alert(t)); // Show error from server
+            }
+        })
+        .catch(err => alert('Error cancelling booking'));
+    }
+</script>
+{% endblock %}

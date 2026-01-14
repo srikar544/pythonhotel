@@ -1,0 +1,153 @@
+/* ===============================
+   USER INFO CONTAINER (TOP)
+   =============================== */
+
+#container {
+    width: 350px;
+    margin: 30px auto;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+}
+
+h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+p {
+    margin: 4px 0;
+}
+
+.logout {
+    display: block;
+    margin-top: 15px;
+}
+
+/* ===============================
+   HOTELS LIST
+   =============================== */
+
+.hotel-list {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    padding: 20px;
+}
+
+/* Hotel card */
+.hotel-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    padding: 15px;
+    transition: transform 0.2s; /* FIXED typo */
+}
+
+.hotel-card:hover {
+    transform: scale(1.02);
+}
+
+.hotel-card h3 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.hotel-city,
+.hotel-address {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 4px 0;
+}
+
+/* ===============================
+   ROOMS SECTION
+   =============================== */
+
+.rooms-section {
+    margin-top: 12px;
+}
+
+/* One room row (same line layout) */
+.room-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 8px;
+    background: #f9f9f9;
+    border-radius: 6px;
+}
+
+/* Left side: room no + type */
+.room-left {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.room-left strong {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.room-type {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* Price in center */
+.room-price {
+    flex: 1;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0a74da;
+}
+
+/* Book button right */
+.room-action {
+    flex: 1;
+    text-align: right;
+}
+
+/* ===============================
+   BOOK BUTTON
+   =============================== */
+
+.book-btn {
+    background: #ff5a5f;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.book-btn:hover {
+    background-color: #e0484d;
+}
+
+/* ===============================
+   MOBILE RESPONSIVE
+   =============================== */
+
+@media (max-width: 768px) {
+    .room-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .room-price,
+    .room-action {
+        text-align: left;
+    }
+
+    .book-btn {
+        width: 100%;
+        text-align: center;
+    }
+}

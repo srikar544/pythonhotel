@@ -1,0 +1,63 @@
+/* ==================================================
+   BOOKING PAGE CONTAINER
+   ================================================== */
+.booking-container {
+    max-width: 900px;       /* Limit container width */
+    margin: 40px auto;      /* Center horizontally */
+    padding: 20px;
+}
+
+/* Page heading */
+.booking-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;        /* dark slate color for heading */
+    font-size: 1.8rem;
+}
+
+/* ==================================================
+   INDIVIDUAL BOOKING CARD
+   ================================================== */
+.booking-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* subtle shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* hover effect */
+}
+
+/* Hover effect to make the card pop */
+.booking-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Hotel name inside card */
+.booking-card h3 {
+    margin: 0;
+    color: #34495e;         /* slightly darker text */
+    font-size: 1.2rem;
+}
+
+/* Hotel address */
+.address {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+/* Booking details inside the card */
+.details p {
+    margin: 6px 0;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Display message when there are no bookings */
+.empty {
+    text-align: center;
+    color: #888;
+    font-size: 1.1rem;
+    margin-top: 40px;
+}

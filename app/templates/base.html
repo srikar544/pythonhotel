@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Character encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Responsive viewport for mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title block: child templates can override this -->
+    <title>{% block title %}Hotel Booking{% endblock %}</title>
+
+    <!-- Base CSS: applied on all pages -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+
+    <!-- Extra page-specific CSS: child templates can add additional styles here -->
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <!-- Site logo / name -->
+        <h1 class="logo">Hotel Booking</h1>
+
+        <!-- Navigation bar -->
+        <nav>
+            <ul>
+                <!-- Always visible link: accessible by all users -->
+                <li><a href="{{ url_for('health.hotels') }}">Hotels</a></li>
+
+                {% if session.get("user_id") %}
+                    <!-- Links visible only to logged-in users -->
+                    <li><a href="{{ url_for('health.home') }}">Home</a></li>
+                    <li><a href="{{ url_for('health.mybookings') }}">My Bookings</a></li>
+                    <li><a href="{{ url_for('health.logout') }}">Logout</a></li>
+                {% else %}
+                    <!-- Links visible only to guests (not logged in) -->
+                    <li><a href="{{ url_for('health.register_page') }}">Register</a></li>
+                    <li><a href="{{ url_for('health.login_page') }}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Main content area -->
+<main>
+    <!-- Child templates will fill this block with page-specific content -->
+    {% block content %}{% endblock %}
+</main>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2026 Hotel Booking System. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+/* ==================================================
+   BOOKING SUCCESS PAGE STYLES
+   ==================================================
+   Styles for the confirmation page shown after a
+   successful hotel booking.
+*/
+
+/* --------------------------------------------------
+   Booking Success Container
+   --------------------------------------------------
+   Acts as a centered card displaying booking details
+   and confirmation message.
+*/
+.book-container {
+    max-width: 480px;                    /* Compact card width */
+    margin: 60px auto;                  /* Center horizontally with spacing */
+    padding: 30px;                      /* Inner spacing */
+    background: #ffffff;                /* Clean white background */
+    border-radius: 12px;                /* Rounded card edges */
+    text-align: center;                 /* Center-align content */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Soft elevation */
+}
+
+/* --------------------------------------------------
+   Success Heading
+   --------------------------------------------------
+   Visually indicates booking completion.
+*/
+.book-container h2 {
+    color: #2ecc71;                     /* Success green */
+    margin-bottom: 20px;
+}
+
+/* --------------------------------------------------
+   Booking Information Text
+   --------------------------------------------------
+   Used for booking details like dates, room, price.
+*/
+.book-container p {
+    font-size: 1rem;
+    color: #333;                        /* High readability */
+    margin: 8px 0;
+}
+
+/* --------------------------------------------------
+   Highlighted Labels
+   --------------------------------------------------
+   Emphasizes important fields (Room, Check-in, etc.)
+*/
+.book-container strong {
+    color: #2c3e50;                     /* Dark contrast text */
+}
+
+/* --------------------------------------------------
+   Action Button (View Bookings / Home)
+   --------------------------------------------------
+*/
+.book-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 18px;
+    background-color: #ff5a5f;          /* Primary brand color */
+    color: #ffffff;
+    border-radius: 6px;
+    text-decoration: none;              /* Remove underline */
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+/* --------------------------------------------------
+   Button Hover State
+   --------------------------------------------------
+*/
+.book-btn:hover {
+    background-color: #e0484d;          /* Darker shade on hover */
+}

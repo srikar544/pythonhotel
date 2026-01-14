@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - Hotel Booking</title>
+
+    <!-- Link to external CSS for styling the form -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header>
+        <div class="container">
+            <h1 class="logo">Hotel Booking</h1>
+            <nav>
+                <ul>
+                    <!-- Always visible navigation links -->
+                    <li><a href="{{ url_for('health.home') }}">Home</a></li>
+                    <li><a href="{{ url_for('health.register_page') }}">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Registration Form Container -->
+    <main class="form-container">
+        <h2>Create Account</h2>
+        <form id="registerForm" autocomplete="off">
+            <!-- Email input field -->
+            <label>Email</label>
+            <input type="email" id="email" placeholder="Enter Email" autocomplete="off" required>
+
+            <!-- Password input field -->
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Enter password" autocomplete="new-password">
+
+            <!-- Submit button -->
+            <button type="submit">Register</button>
+        </form>
+
+        <!-- Message area for success/error feedback -->
+        <p id="message"></p>
+
+        <!-- JavaScript: Handles form submission via AJAX -->
+        <script>
+            // Select form and message paragraph
+            const form = document.getElementById("registerForm");
+            const message = document.getElementById("message");
+
+            // Handle form submission
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault(); // Prevent page reload
+
+                // Get form input values
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+
+                try {
+                    // Send registration request to server
+                    const response = await fetch("/api/register", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ email, password })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        // Show success message
+                        message.style.color = "green";
+                        message.textContent = "Registration successful!";
+                        form.reset(); // Clear the form
+                    } else {
+                        // Show error message from server
+                        message.style.color = "red";
+                        message.textContent = data.error || "Something went wrong";
+                    }
+                } catch (err) {
+                    // Catch network or other errors
+                    message.style.color = "red";
+                    message.textContent = "Network error. Please try again.";
+                }
+            });
+        </script>
+    </main>
+</body>
+</html>

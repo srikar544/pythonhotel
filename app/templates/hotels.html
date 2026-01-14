@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Hotels{% endblock %}
+
+{% block extra_css %}
+<!-- Include page-specific CSS for hotels listing -->
+<link rel="stylesheet" href="{{ url_for('static', filename='hotels.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Welcome header and user info -->
+<h2>Welcome to Hotels Page</h2>
+<p>User ID: {{ session.get("user_id") }}</p>
+<p>User Name: {{ session.get("username") }}</p>
+
+<!-- Hotels Grid/List -->
+<div class="hotel-list">
+  {% for hotel in hotels %}
+  <div class="hotel-card">
+    
+    <!-- Hotel basic info -->
+    <div class="hotel-info">
+      <h3 class="hotel-name">
+        {{ hotel.name }} ({{ hotel.city }})
+      </h3>
+      <p class="hotel-address">{{ hotel.address }}</p>
+    </div>
+
+    <!-- Rooms section -->
+    <div class="rooms-section">
+      <strong>Rooms:</strong>
+
+      {% for room in hotel.rooms %}
+      <div class="room-row">
+
+        <!-- Room number and type -->
+        <div class="room-info">
+          <span><strong>Room {{ room.room_number }}</strong></span>
+          <span>- {{ room.room_type }}</span>
+        </div>
+
+        <!-- Room price -->
+        <div class="room-price">
+          ₹{{ room.price }}
+        </div>
+
+        <!-- Book button linking to booking page -->
+        <div class="room-action">
+          <a href="{{ url_for('health.book_room', room_id=room.id) }}" class="book-btn">Book</a>
+        </div>
+
+      </div>
+      {% endfor %}
+
+    </div> <!-- End of rooms-section -->
+
+  </div> <!-- End of hotel-card -->
+  {% endfor %}
+</div> <!-- End of hotel-list -->
+
+{% endblock %}

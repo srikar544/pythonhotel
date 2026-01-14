@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Booking Confirmed{% endblock %}
+
+{% block content %}
+<div class="book-container">
+    <!-- Confirmation message -->
+    <h2>Booking Confirmed</h2>
+
+    <!-- Hotel details -->
+    <p><strong>Hotel:</strong> {{ room.hotel.name }}</p>
+
+    <!-- Room details -->
+    <p><strong>Room Number:</strong> {{ room.room_number }}</p>
+
+    <!-- Number of nights -->
+    <p><strong>Nights:</strong> {{ nights }}</p>
+
+    <!-- Total price for the stay -->
+    <p><strong>Total Price:</strong> ₹{{ total_price }}</p>
+
+    <!-- Button to navigate back to the hotels listing -->
+    <a href="{{ url_for('health.hotels') }}" class="book-btn">Back to Hotels</a>
+</div>
+{% endblock %}

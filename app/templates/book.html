@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Book Room{% endblock %}
+
+{% block extra_css %}
+<!-- Page-specific CSS for the booking form -->
+<link rel="stylesheet" href="{{ url_for('static', filename='book.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="book-container">
+    <!-- Hotel info -->
+    <h3>{{ room.hotel.name }} ({{ room.hotel.city }})</h3>
+    <p>{{ room.hotel.address }}</p>
+    <hr>
+
+    <!-- Room details -->
+    <p><strong>Room Number:</strong> {{ room.room_number }}</p>
+    <p><strong>Room Type:</strong> {{ room.room_type }}</p>
+    <p><strong>Price Per Night:</strong> ₹{{ room.price }}</p>
+
+    <!-- Booking form -->
+    <form method="POST">
+        <label>Check-In</label>
+        <!-- Required date input for check-in -->
+        <input type="date" name="check_in" id="check_in" required>
+
+        <label>Check-Out</label>
+        <!-- Required date input for check-out -->
+        <input type="date" name="check_out" id="check_out" required>
+
+        <!-- Submit button -->
+        <button class="book-btn">Confirm Booking</button>
+    </form>
+</div>
+
+<script>
+    // Disabled date ranges from existing bookings (from Flask backend)
+    const disabledRanges = {{ disabled_ranges | tojson }};
+
+    /**
+     * Check if a given date falls into any disabled range
+     * @param {string} date - in YYYY-MM-DD format
+     * @returns {boolean} true if date is disabled
+     */
+    function isDateDisabled(date){
+        return disabledRanges.some(range => {
+            // Check if date is within a booked range (inclusive of check_in, exclusive of check_out)
+            return date >= range.check_in && date < range.check_out;
+        });
+    }
+
+    /**
+     * Validate selected check-in/check-out dates
+     * Returns false and shows alert if any date is unavailable
+     */
+    function validDates(){
+        const checkIn  = document.getElementById("check_in").value;
+        const checkOut = document.getElementById("check_out").value;
+
+        if(!checkIn || !checkOut) return true; // no dates selected yet
+
+        let current = checkIn;
+
+        while(current < checkOut){
+            if(isDateDisabled(current)){
+                alert("Selected dates include unavailable days.");
+                return false; // stop form submission
+            }
+            // Move to next day
+            current = new Date(new Date(current).getTime() + 86400000)
+                        .toISOString()
+                        .split("T")[0];
+        }
+
+        return true; // all dates valid
+    }
+
+    // Attach date validation to form submission
+    document.querySelector("form").onsubmit = validDates;
+</script>
+{% endblock %}

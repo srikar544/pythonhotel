@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    
+    <!-- Link to CSS file for form styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+</head>
+<body>
+
+<!-- Main login form container -->
+<main class="form-container">
+    <!-- Page heading -->
+    <h2>Login Page</h2>
+
+    <!-- Login form -->
+    <form id="loginForm" autocomplete="off">
+        <!-- Email input -->
+        <label>Email</label>
+        <input id="email" name="email" autocomplete="off" required>
+
+        <!-- Password input -->
+        <label>Password</label>
+        <input id="password" name="password" type="password" autocomplete="new-password" required>
+
+        <!-- Submit button -->
+        <button type="submit">Login</button>
+    </form>
+
+    <!-- Message container for success/error feedback -->
+    <p id="message"></p>
+</main>
+
+<!-- JavaScript to handle form submission via AJAX -->
+<script>
+    const form = document.getElementById("loginForm");
+    const message = document.getElementById("message");
+
+    // Listen for form submission
+    form.addEventListener("submit", async function (e) {
+        e.preventDefault();  // prevent default form submission
+
+        // Get form values
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        try {
+            // Send login request to API
+            const response = await fetch("/api/login", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({email, password})
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Login successful
+                message.style.color = "green";
+                message.textContent = "Login Successful!";
+
+                // Redirect to hotels page after short delay
+                setTimeout(() => {
+                    window.location.href = "/hotels";
+                }, 500);
+            } else {
+                // Login failed: show error from API
+                message.style.color = "red";
+                message.textContent = data.error;
+            }
+        } catch (err) {
+            // Network or unexpected error
+            message.style.color = "red";
+            message.textContent = "An unexpected error occurred.";
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Hotel Booking 2026{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section: Main landing banner for the homepage -->
+<section class="hero">
+    <!-- Main heading welcoming users -->
+    <h2>Welcome to Hotel Booking System</h2>
+
+    <!-- Subheading / description -->
+    <p>Book your favorite hotels easily and quickly!</p>
+
+    <!-- Call-to-action button linking to the hotels page -->
+    <a href="{{ url_for('health.hotels') }}" class="btn">View Hotels</a>
+</section>
+
+{% endblock %}

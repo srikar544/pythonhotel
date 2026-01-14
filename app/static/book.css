@@ -1,0 +1,43 @@
+/* --------------------------------------------------
+   Booking Form Container
+   --------------------------------------------------
+   Centers the booking card and gives it a clean,
+   modern card-like appearance.
+*/
+.book-container {
+    max-width: 500px;              /* Restrict width for readability */
+    margin: 40px auto;             /* Center horizontally with top spacing */
+    padding: 20px;                 /* Inner spacing */
+    background: #fff;              /* White card background */
+    border-radius: 10px;           /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* --------------------------------------------------
+   Book Button
+   --------------------------------------------------
+   Primary action button for booking a room.
+*/
+.book-btn {
+    background: #ff5a5f;           /* Airbnb-style red */
+    color: white;                  /* White text for contrast */
+    padding: 10px 16px;            /* Comfortable clickable area */
+    border-radius: 5px;            /* Slight rounding */
+    border: none;                  /* Remove default button border */
+    cursor: pointer;               /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+/* --------------------------------------------------
+   Hover Effect for Book Button
+   --------------------------------------------------
+   Provides visual feedback when user hovers.
+*/
+.book-btn:hover {
+    background-color: #e0484d;     /* Darker red on hover */
+}
+
+.book-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
