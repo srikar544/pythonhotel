@@ -87,6 +87,22 @@ select * from room where id in (2,3); # rooms for user "paul@hotel.com"
 
 <img width="935" height="308" alt="image" src="https://github.com/user-attachments/assets/bdd64a17-0514-4452-8b96-c484629f6d14" />
 
+Click on Cancel Booking
+
+<img width="1595" height="612" alt="image" src="https://github.com/user-attachments/assets/356ee381-65d4-4588-bf5b-01466272dc4b" />
+
+Click on Ok button
+
+<img width="1818" height="677" alt="image" src="https://github.com/user-attachments/assets/33259388-07a4-40e5-803e-7d97cbc27a5b" />
+
+
+<img width="1823" height="548" alt="image" src="https://github.com/user-attachments/assets/e57e0520-0f70-462e-aac9-9adff912a127" />
+
+
+Click on My Bookings
+
+
+
 ## Future Enhancements
 
 * Admin dashboard for hotel management
@@ -94,6 +110,7 @@ select * from room where id in (2,3); # rooms for user "paul@hotel.com"
 * Booking cancellation & refunds
 * Email notifications
 * Role-based access control
+
 
 
 
