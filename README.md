@@ -83,8 +83,9 @@ Again Click on My Bookings link
 
 <img width="1889" height="876" alt="image" src="https://github.com/user-attachments/assets/1eb48c92-d6a1-4986-b9b2-e1a6629301f3" />
 
+select * from room where id in (2,3); # rooms for user "paul@hotel.com"
 
-
+<img width="935" height="308" alt="image" src="https://github.com/user-attachments/assets/bdd64a17-0514-4452-8b96-c484629f6d14" />
 
 ## Future Enhancements
 
@@ -93,6 +94,7 @@ Again Click on My Bookings link
 * Booking cancellation & refunds
 * Email notifications
 * Role-based access control
+
 
 
 
