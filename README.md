@@ -67,6 +67,20 @@ Clicking on View Hotels link
 
 <img width="1912" height="908" alt="image" src="https://github.com/user-attachments/assets/0f12a678-1810-4dbc-9dd5-1a03e93b4916" />
 
+Clicking on Book button
+
+<img width="1891" height="867" alt="image" src="https://github.com/user-attachments/assets/13323040-dac1-4225-9b27-47815c74b738" />
+
+Navigates to the Confirm Booking Screen
+
+<img width="1918" height="490" alt="image" src="https://github.com/user-attachments/assets/cbd956ea-ab05-41fb-89e4-c9688d531c21" />
+
+Clicking on Confirm Booking navigates to the My Bookings Page
+
+<img width="1919" height="532" alt="image" src="https://github.com/user-attachments/assets/d07bb136-7eb3-4bb7-bd52-854de8c41b00" />
+
+
+
 ## Future Enhancements
 
 * Admin dashboard for hotel management
@@ -74,5 +88,6 @@ Clicking on View Hotels link
 * Booking cancellation & refunds
 * Email notifications
 * Role-based access control
+
 
 
