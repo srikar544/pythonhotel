@@ -5,3 +5,14 @@ will support **multiple concurrent users** and build to be **scalable on AWS**. 
 
 **TechStack used for this project**
 
+
+| **Layer**      | **Technology**          |
+| -------------- | ----------------------- |
+| Backend        | Flask                   |
+| ORM            | Flask-SQLAlchemy        |
+| Database       | MySQL                   |
+| Authentication | Flask-Login             |
+| Templates      | Jinja2                  |
+| Styling        | HTML / CSS (extendable) |
+
+**Features of the Application:**
