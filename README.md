@@ -105,13 +105,72 @@ Click on My Bookings
 
 **Classes Responsibilties**
 
-   __init__.py -> creates a SQLAlchemy object, Flask app instance, loads the environment variables, Gets the database connection from .env files, loads the SQLALCHEMY_DATABASE_URI,initialize tables,register blueprints, creates database tables .
-  __models.py__   -> Create models for 
-                      . User table,fields and bookings variable has relationship with Booking table(backref="user") this line is to have back and forth relationship(bidirectional relationship:) ex: user ->                               booking and booking -> user. One user can have many bookings. 
-                      . Hotel table,fields and rooms variable has relationship with rooms table(backref="hotel") this line is to have back and forth relationship(bidirectional relationship:) ex: Hotel -> room                            and room to hotel -> One Hotel can have many rooms.
-                      . Room table, fields,hotel_id foreign key linked to Hotel table  and  bookings variable has relationship with Room table(backref="room") this line is to have back and forth                                          relationship((bidirectional relationship:) ex: Room -> booking and booking -> Room.  
-                      . Booking table fields,user_id foreign key linked to User table column id , room_id foreign key linked to Room table column id
-                      
+## Project Structure & Database Design
+
+### __init__.py
+
+* Creates the **Flask application instance**
+* Initializes the **SQLAlchemy object**
+* Loads **environment variables** from .env
+* Reads the SQLALCHEMY_DATABASE_URI
+* Establishes the **database connection**
+* Registers all **blueprints**
+* Initializes and creates **database tables**
+
+---
+
+### models.py
+
+Defines all database models and their relationships using SQLAlchemy.
+
+#### **User Table**
+
+* Contains user-related fields
+* Defines a `bookings` relationship with the **Booking** table using `backref="user"`
+* Enables a **bidirectional relationship**:
+
+  * User → Bookings
+  * Booking → User
+* **Relationship type:** One user can have **many bookings** (One-to-Many)
+
+---
+
+#### **Hotel Table**
+
+* Contains hotel-related fields
+* Defines a `rooms` relationship with the **Room** table using `backref="hotel"`
+* Enables a **bidirectional relationship**:
+
+  * Hotel → Rooms
+  * Room → Hotel
+* **Relationship type:** One hotel can have **many rooms** (One-to-Many)
+
+---
+
+#### **Room Table**
+
+* Contains room-related fields
+* hotel_id is a **foreign key** linked to the `id` column of the **Hotel** table
+* Defines a bookings relationship with the **Booking** table using `backref="room"
+* Enables a **bidirectional relationship**:
+
+  * Room → Bookings
+  * Booking → Room
+* **Relationship type:** One room can have **many bookings** (One-to-Many)
+
+---
+
+#### **Booking Table**
+
+* Contains booking-related fields
+* user_id is a **foreign key** linked to the `id` column of the **User** table
+* room_id is a **foreign key** linked to the `id` column of the **Room** table
+* Each booking belongs to:
+
+  * **One user**
+  * **One room**
+
+                    
 ## Future Enhancements
 
 * Admin dashboard for hotel management
@@ -119,11 +178,4 @@ Click on My Bookings
 * Booking cancellation & refunds
 * Email notifications
 * Role-based access control
-
-
-
-
-
-
-
 
