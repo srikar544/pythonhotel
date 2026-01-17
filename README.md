@@ -1,10 +1,9 @@
-Python Hotel Booking Platform 📋
+🏨 Python Hotel Booking Platform
 
-This project is a **Hotel Booking System** that allows user to browse available hotels and make bookings based on real time availability . This application is designed in a **Production-Ready architecture**,
-will support **multiple concurrent users** and build to be **scalable on AWS**. It follows modular design priniciples to ensure performance,security and future extensibility.
+A Flask-based **Hotel Booking System** that allows users to browse available hotels and make bookings based on **real-time availability**.
+The application follows a **production-ready, modular architecture**, supports **multiple concurrent users**, and is designed to be **scalable on AWS**. It emphasizes performance, security, and future extensibility.
 
-**TechStack used for this project**
-
+##  Tech Stack
 
 | **Layer**      | **Technology**          |
 | -------------- | ----------------------- |
@@ -13,43 +12,55 @@ will support **multiple concurrent users** and build to be **scalable on AWS**. 
 | Database       | MySQL                   |
 | Authentication | Flask-Login             |
 | Templates      | Jinja2                  |
-| Styling        | HTML / CSS (extendable) |
+| Styling        | HTML / CSS (Extendable) |
 
-**Application Features**
+##  Application Features
 
- * User registration functionality for new users.
- * Secure login for existing users.
- * Hotel booking based on real-time room availability.
- * Prevention of double bookings by restricting reservations when rooms are unavailable, even if multiple users attempt to book the same hotel at the same time.
+* User registration functionality for new users.
+* Secure login for existing users.
+* Hotel booking based on real-time room availability.
+* Prevention of double booking by restricting reservations when rooms are unavailable, even if multiple users attempt to book the same hotel simultaneously.
 
-**Database Schema**
+## Database Schema
 
+| **Table** | **Primary Key** | **Foreign Keys** |
+| --------- | --------------- | ---------------- |
+| User      | id              | —                |
+| Hotel     | id              | —                |
+| Room      | id              | hotel_id         |
+| Booking   | id              | user_id, room_id |
 
-| **Table**      | **Primary Column**      |  ** Foreign Key ** |
-| -------------- | ----------------------- |  ----------------  |
-|    User        |      id                 |                    |
-|   hotel        |      id                 |                    |
-|   room         |     id                  |  hotel_id          |
-|   booking      |     id                  |  user_id,room_id   |
-|                |                         |                    |
+### Table Relationships
 
+* `booking.user_id` → `user.id`
+* `booking.room_id` → `room.id`
+* `room.hotel_id` → `hotel.id`
 
- hotel table column id is mapped to User table column id 
- booking hotel table column user_id mapped to user table column id
- room table column id mapped to booking table column room_id
+###  Example Query
 
- Example Query: 
- select * from user u inner join booking b on u.id=b.user_id 
-  inner join room r on r.id=b.room_id
+```sql
+SELECT *
+FROM user u
+INNER JOIN booking b ON u.id = b.user_id
+INNER JOIN room r ON r.id = b.room_id;
+```
+## 🔄 Application Flow
 
- <img width="940" height="343" alt="image" src="https://github.com/user-attachments/assets/2e257edb-721f-47e6-aca2-b223917d6235" />
-
-
-## Application Flow
-
-* On the Home page, users can either **register** or **log in**.
+* On the **Home page**, users can either **register** or **log in**.
 * If a user clicks **View Hotels** without logging in, they are redirected to the **Login page**.
-* After successful login, clicking **View Hotels** displays all available hotels fetched from the database.
+* After successful login, clicking **View Hotels** loads all hotels from the database.
 * When a user books a hotel, the user is mapped to the selected hotel and room in the **Bookings** table.
 
+---
 
+## 🖼️ Screenshots
+
+
+
+## Future Enhancements
+
+* Admin dashboard for hotel management
+* Payment gateway integration
+* Booking cancellation & refunds
+* Email notifications
+* Role-based access control
