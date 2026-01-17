@@ -170,6 +170,22 @@ Defines all database models and their relationships using SQLAlchemy.
   * **One user**
   * **One room**
 
+**routes.py class**
+
+@health_bp.route("/", methods=["GET"])                               -> This api renders index.html page
+@health_bp.route("/register", methods=["GET"])                       -> This api renders registration.html page
+@health_bp.route("/login", methods=["GET"])                          -> This api renders login.html page
+@health_bp.route("/hotels", methods=["GET"])                         -> This api if no user logged in then redirects to the login page else Fetch all hotels and rooms and                                                                        							                renders hotels.html page by passing hotels table data
+@health_bp.route("/api/register", methods=["GET","POST"])            -> This api registers the user if he doesn't exist in the system and enter valid input then a new user will be created with                     					        with method post if method is get then renders registration.html page
+@health_bp.route("/api/login", methods=["GET","POST"])               -> This api logins the user if enter valid username and password and present in the System with method post
+                                                                        post if method is get then renders login.html page
+@health_bp.route("/logout")                                          -> This api logout the user from the system
+@health_bp.route("/book/<int:room_id>", methods=["GET", "POST"])     -> This one takes the room id as variable for method if user id not logged in go to register page else gets the Room then  								        pass it to the bookings variable and gets confirmed bookings. if method is post then get check_in_str and              									check_out_str and prevent overlapped bookings if room is already booked and get total_price and save the booking to   									the database table render_template and pass the variables room table,nights,total_price to the booking_success.html
+                                                                        if request method is get then render book.html with table room and disabled_ranges=disabled_ranges
+@health_bp.route("/my-bookings")                                       -> This api gets the my bookings list for user id who is logged in and renders the template my_bookings.html
+@health_bp.route("/cancel-booking/<int:booking_id>", methods=["POST"]) -> This api takes the variable booking id to cancel the booking and checks only owner + prevent cancelling past + 									  ongoing booking and cancels the booking and stay in same page
+
+
                     
 ## Future Enhancements
 
@@ -178,4 +194,5 @@ Defines all database models and their relationships using SQLAlchemy.
 * Booking cancellation & refunds
 * Email notifications
 * Role-based access control
+
 
