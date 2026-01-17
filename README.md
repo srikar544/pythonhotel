@@ -101,6 +101,7 @@ Click on Ok button
 
 Click on My Bookings
 
+<img width="1896" height="582" alt="image" src="https://github.com/user-attachments/assets/2747a956-85f9-47b4-8ee6-c2564b2a432e" />
 
 
 ## Future Enhancements
@@ -110,6 +111,7 @@ Click on My Bookings
 * Booking cancellation & refunds
 * Email notifications
 * Role-based access control
+
 
 
 
