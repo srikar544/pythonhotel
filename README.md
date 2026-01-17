@@ -241,7 +241,7 @@ Defines all database models and their relationships using SQLAlchemy.
 **base.html**
 
 if user doesn't login loads the Hotel Booking,Hotels,Register,Login text
-if user login loads Hotel Booking,Hotels,Home,My Bookings,Logout
+if user login loads Hotel Booking,Hotels,Home,My Bookings,Logout text
 
 **index.html**
 
@@ -256,8 +256,29 @@ gets the email and password fetch api/login call and handles the if and else con
 
 It loads the registration Page and handles the submit button functionality form.addEventListener("submit", async function (e) {}
 gets the email and password fetch api/register call and handles the if and else condition according to given username and password validity
-         
 
+**hotels.html**
+
+loads the html page with some texts, user id and username
+This one loops each hotel {% for hotel in hotels %} from hotels database -> gets all the hotels and loads the hotels
+This one loops each rooms in the Hotel {% for room in hotel.rooms %} -> gets the hotel -> rooms and loads the rooms details and calls health.book_room method with room id when clicked on book link in the health.book_room
+
+**book.html**
+
+ Gets the Hotel and Room details and call the script function on clicking Confirm Booking 
+ disabled_rangers [
+  { "check_in": "2026-01-20", "check_out": "2026-01-22" },
+  { "check_in": "2026-01-25", "check_out": "2026-01-28" }
+]
+
+This script performs client-side validation to prevent users from booking rooms on dates that overlap with existing reservations by checking disabled date ranges before form submission.
+
+**my_bookings.html**
+
+if part for bookings take the data from database. get the hotel+booking details for logged in user, gets the booking status on cancelBooking fetch(`/cancel-booking/${bookingId}` and cancel if user clicks on ok button
+else You have no booking yet
+         
+ 
 ## Future Enhancements
 
 * Admin dashboard for hotel management
@@ -265,6 +286,7 @@ gets the email and password fetch api/register call and handles the if and else 
 * Booking cancellation & refunds
 * Email notifications
 * Role-based access control
+
 
 
 
