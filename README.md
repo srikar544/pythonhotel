@@ -43,3 +43,13 @@ will support **multiple concurrent users** and build to be **scalable on AWS**. 
   inner join room r on r.id=b.room_id
 
  <img width="940" height="343" alt="image" src="https://github.com/user-attachments/assets/2e257edb-721f-47e6-aca2-b223917d6235" />
+
+
+## Application Flow
+
+* On the Home page, users can either **register** or **log in**.
+* If a user clicks **View Hotels** without logging in, they are redirected to the **Login page**.
+* After successful login, clicking **View Hotels** displays all available hotels fetched from the database.
+* When a user books a hotel, the user is mapped to the selected hotel and room in the **Bookings** table.
+
+
