@@ -44,7 +44,7 @@ FROM user u
 INNER JOIN booking b ON u.id = b.user_id
 INNER JOIN room r ON r.id = b.room_id;
 ```
-## 🔄 Application Flow
+##  Application Flow
 
 * On the **Home page**, users can either **register** or **log in**.
 * If a user clicks **View Hotels** without logging in, they are redirected to the **Login page**.
@@ -53,7 +53,19 @@ INNER JOIN room r ON r.id = b.room_id;
 
 ---
 
-## 🖼️ Screenshots
+##  Screenshots
+
+Home Page
+
+<img width="1898" height="916" alt="image" src="https://github.com/user-attachments/assets/d5d42b27-65e4-4a15-a148-e13fa1295cb7" />
+
+Click on My Bookings
+
+<img width="1898" height="903" alt="image" src="https://github.com/user-attachments/assets/1198172f-c791-460c-b9a3-d6b2298a299a" />
+
+Clicking on View Hotels link
+
+<img width="1912" height="908" alt="image" src="https://github.com/user-attachments/assets/0f12a678-1810-4dbc-9dd5-1a03e93b4916" />
 
 
 
@@ -64,3 +76,4 @@ INNER JOIN room r ON r.id = b.room_id;
 * Booking cancellation & refunds
 * Email notifications
 * Role-based access control
+
