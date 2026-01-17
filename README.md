@@ -236,7 +236,40 @@ Defines all database models and their relationships using SQLAlchemy.
 -> Prevents cancelling past or ongoing bookings.
 -> Cancels the booking and stays on the same page.
 
-           
+## HTML and its Functionalities
+
+**base.html**
+
+if user doesn't login
+
+Hotel Booking
+Hotels
+Register
+Login
+
+if user login
+
+Hotel Booking
+Hotels
+Home
+My Bookings
+Logout
+
+**index.html**
+
+it loads the middles section along with base.html
+
+**login.html**
+
+It loads the Login Page and handles the submit button functionality form.addEventListener("submit", async function (e) {}
+gets the email and password fetch api/login call and handles the if and else condition according to correct username and password
+
+**register.html**
+
+It loads the registration Page and handles the submit button functionality form.addEventListener("submit", async function (e) {}
+gets the email and password fetch api/register call and handles the if and else condition according to given username and password validity
+         
+
 ## Future Enhancements
 
 * Admin dashboard for hotel management
@@ -244,6 +277,7 @@ Defines all database models and their relationships using SQLAlchemy.
 * Booking cancellation & refunds
 * Email notifications
 * Role-based access control
+
 
 
 
