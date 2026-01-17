@@ -240,20 +240,8 @@ Defines all database models and their relationships using SQLAlchemy.
 
 **base.html**
 
-if user doesn't login
-
-Hotel Booking
-Hotels
-Register
-Login
-
-if user login
-
-Hotel Booking
-Hotels
-Home
-My Bookings
-Logout
+if user doesn't login loads the Hotel Booking,Hotels,Register,Login text
+if user login loads Hotel Booking,Hotels,Home,My Bookings,Logout
 
 **index.html**
 
@@ -277,6 +265,7 @@ gets the email and password fetch api/register call and handles the if and else 
 * Booking cancellation & refunds
 * Email notifications
 * Role-based access control
+
 
 
 
