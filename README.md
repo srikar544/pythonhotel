@@ -103,7 +103,15 @@ Click on My Bookings
 
 <img width="1896" height="582" alt="image" src="https://github.com/user-attachments/assets/2747a956-85f9-47b4-8ee6-c2564b2a432e" />
 
+**Classes Responsibilties**
 
+   __init__.py -> creates a SQLAlchemy object, Flask app instance, loads the environment variables, Gets the database connection from .env files, loads the SQLALCHEMY_DATABASE_URI,initialize tables,register blueprints, creates database tables .
+  __models.py__   -> Create models for 
+                      . User table,fields and bookings variable has relationship with Booking table(backref="user") this line is to have back and forth relationship(bidirectional relationship:) ex: user ->                               booking and booking -> user. One user can have many bookings. 
+                      . Hotel table,fields and rooms variable has relationship with rooms table(backref="hotel") this line is to have back and forth relationship(bidirectional relationship:) ex: Hotel -> room                            and room to hotel -> One Hotel can have many rooms.
+                      . Room table, fields,hotel_id foreign key linked to Hotel table  and  bookings variable has relationship with Room table(backref="room") this line is to have back and forth                                          relationship((bidirectional relationship:) ex: Room -> booking and booking -> Room.  
+                      . Booking table fields,user_id foreign key linked to User table column id , room_id foreign key linked to Room table column id
+                      
 ## Future Enhancements
 
 * Admin dashboard for hotel management
@@ -111,6 +119,7 @@ Click on My Bookings
 * Booking cancellation & refunds
 * Email notifications
 * Role-based access control
+
 
 
 
