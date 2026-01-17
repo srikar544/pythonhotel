@@ -67,8 +67,6 @@ Clicking on View Hotels link
 
 <img width="1912" height="908" alt="image" src="https://github.com/user-attachments/assets/0f12a678-1810-4dbc-9dd5-1a03e93b4916" />
 
-
-
 ## Future Enhancements
 
 * Admin dashboard for hotel management
@@ -76,4 +74,5 @@ Clicking on View Hotels link
 * Booking cancellation & refunds
 * Email notifications
 * Role-based access control
+
 
